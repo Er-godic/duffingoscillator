@@ -3,7 +3,7 @@ from scipy.integrate import odeint
 import matplotlib.pyplot as plt
 
 # parameters
-omega = 1.4
+omega = 2.4
 T = 2 * np.pi / omega
 
 def duffing(u, t, A, B, C, D, E):
@@ -11,10 +11,10 @@ def duffing(u, t, A, B, C, D, E):
     a = - 4 * A * (x**3) + 2 * B * x - C * v + D * np.cos(E * t)
     return v, a
 
-r0 = [0, 0]
+r0 = [0.5, 0]
 
 t = np.arange(0, 25000 * T, T)
-r_t = odeint(duffing, r0, t, args=(0.25, 0.5, 0.1, 0.39, omega))
+r_t = odeint(duffing, r0, t, args=(0.25, 0.5, 0.1, 2.0, omega))
 
 x = r_t[:, 0]
 v = r_t[:, 1]
